@@ -40,7 +40,7 @@ export const AllCryptos = () => {
       ))}
       <div className="load-more">
         {cryptosList?.coins?.length === 100 ? '' : (
-          <Button onClick={dispatch(loadMoreCryptos(cryptosPage))} className="load-more-btn">
+          <Button onClick={() => dispatch(loadMoreCryptos(cryptosPage))} className="load-more-btn">
             Load More
           </Button>
         )}
