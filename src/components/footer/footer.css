@@ -1,0 +1,19 @@
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px auto;
+    padding: 20px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.footer a{
+    color: var(--pink);
+}
+.footer-links{
+    display: flex;
+    gap: 20px;
+}

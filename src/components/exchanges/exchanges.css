@@ -1,0 +1,16 @@
+.currency-card{
+    position: relative;
+ 
+}
+.ant-collapse-borderless > .ant-collapse-item{
+    border: none;
+}
+.ant-collapse > .ant-collapse-item > .ant-collapse-header{
+    padding: 0px;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow{
+    position:absolute;
+    right: 20px;
+    top: 30px;
+}

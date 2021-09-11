@@ -1,0 +1,124 @@
+.coin-detail-container{
+    margin: 10px 30px;
+ 
+}
+.coin-heading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid var(--border);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 10px;
+}
+.coin-heading-container .coin-name{
+    font-weight: 800;
+    color: var(--pink);
+    font-size: 1.7rem;
+}
+.coin-heading-container p{
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.stats-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+.stats-container h2{
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-top: 20px;
+    color: var(--pink);
+}
+.coin-stats{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    opacity: 0.9;
+    padding: 10px;
+
+}
+
+.coin-stats-name{
+    display: flex;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.stats{
+    font-weight: 800;
+
+}
+.coin-value-statistics-heading p{
+    font-size: 1rem;
+    opacity: 0.9;
+}
+.coin-desc-link{
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+.coin-desc-link h2{
+    font-weight: 700;
+color: var(--pink);
+}
+.coin-desc-link p{
+    font-size: 1rem;
+    opacity: 0.9;
+}
+.coin-desc-link a{
+    color: var(--pink);
+}
+.coin-desc-link h3{
+    font-weight: 700;
+}
+.coin-desc{
+    flex: 0.5;
+}
+.coin-links{
+  padding: 0px 20px;
+    flex: 0.5;
+}
+.coin-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+padding-top: 10px;
+}
+.link-name{
+    text-transform: capitalize;
+    font-size: 1rem;
+    
+}
+.coin-link a{
+    color: var(--pink);
+font-weight: 700;
+font-size: 1rem;
+}
+.coin-link:hover, .coin-stats:hover{
+    background-color: var(--bgSecondary);
+}
+@media screen and (max-width:1000px){
+.stats-container{
+    flex-direction: column;
+}
+.coin-desc-link{
+    flex-direction: column;
+}
+.stats-container h2{
+    margin-top: 0px;
+}
+}
+@media screen and (max-width: 500px){
+    .coin-links{
+        padding: 0px;
+    }
+}
