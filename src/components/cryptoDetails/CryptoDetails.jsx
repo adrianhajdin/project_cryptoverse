@@ -13,18 +13,13 @@ import { GoVerified } from 'react-icons/go';
 import { BsInfoCircle } from 'react-icons/bs';
 import { CgDanger } from 'react-icons/cg';
 
-import { getCryptoDetails, useCryptoDetialsSelector } from './cryptoDetailsSlice';
 import './cryptoDetails.css';
+import { useGetCryptoDetailsQuery } from '../../services/cryptoApi';
 
 export const CryptoDetails = () => {
-  const { cryptoDetails } = useCryptoDetialsSelector();
   const { coinId } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCryptoDetails(coinId));
-  }, []);
-
+  const { data } = useGetCryptoDetailsQuery(coinId);
+  const cryptoDetails = data?.data?.coin;
   if (!cryptoDetails) {
     return (
       <div className="loading">
@@ -37,7 +32,7 @@ export const CryptoDetails = () => {
     <div className="coin-detail-container">
       <div className="coin-heading-container">
         <div className="coin-name">
-          {cryptoDetails.name} ({cryptoDetails.slug}) Price
+          {data?.data?.coin.name} ({data?.data?.coin.slug}) Price
         </div>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </div>

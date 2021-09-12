@@ -11,20 +11,18 @@ margin-bottom: 10px;
 
 .news-container{
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     padding: 10px;
 }
+.news-card-container{
+    width: 100%;
+}
 .news-card{
     padding: 10px;
-width: 350px;
-
     background-color: var(--bgSecondary);
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-direction: column;
+    gap: 40px;
     align-items: center;
     transition: 0.2s ease-in;
     color: var(--text-primary);
@@ -34,8 +32,6 @@ width: 350px;
     font-size: 1.1rem;
 }
 .news-card img{
-    width: 250px;
-    height: 120px;
     border-radius: 5px;
 }
 .news-card:hover{
@@ -57,6 +53,7 @@ width: 350px;
         color: black;
         opacity: 0.7;
     }
+   
 .load-more{
     display: flex;
     justify-content: center;
@@ -67,4 +64,18 @@ width: 350px;
         background-color: var(--pink);
         color:var(--bgPrimary);
     
+    }
+
+    @media screen and (max-width: 450px){
+        .news-card{
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+        .news-desc{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }

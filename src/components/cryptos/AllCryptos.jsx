@@ -4,14 +4,12 @@ import millify from 'millify';
 import { Button } from 'antd';
 import 'antd/dist/antd.css';
 
-import { useCryptoListSelector, getAllCryptos, loadMoreCryptos } from './cryptosSlice';
-
 export const AllCryptos = () => {
-  const { cryptosList, cryptosPage } = useCryptoListSelector();
+  // const { cryptosList, cryptosPage } = useCryptoListSelector();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCryptos({ number: 20 }));
+    // dispatch(getAllCryptos({ number: 20 }));
   }, []);
 
   if (!cryptosList?.coins.length) {

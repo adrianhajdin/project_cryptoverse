@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { AiFillCaretRight } from 'react-icons/ai';
 import millify from 'millify';
 import { Collapse } from 'antd';
 import HTMLReactParser from 'html-react-parser';
 
 import './exchanges.css';
-import { getAllExchanges, useExchangesListSelector } from './exchangesSlice';
+import { useGetExchangesQuery } from '../../services/cryptoApi';
 
 export const Exchanges = () => {
-  const { exchangesList } = useExchangesListSelector();
-  const dispatch = useDispatch();
   const { Panel } = Collapse;
-
-  useEffect(() => {
-    dispatch(getAllExchanges());
-  }, []);
-
-  if (!exchangesList?.exchanges?.length) {
+  const { data } = useGetExchangesQuery();
+  const exchangesList = data?.data?.exchanges;
+  if (!exchangesList?.length) {
     return (
       <div className="loading">
         loading...
@@ -36,7 +30,7 @@ export const Exchanges = () => {
         <p className="market-cap-title">Markets</p>
         <p>Change</p>
       </div>
-      {exchangesList?.exchanges?.map((exchange) => (
+      {exchangesList?.map((exchange) => (
         <Collapse bordered={false} expandIcon={({ isActive }) => <AiFillCaretRight rotate={isActive ? 90 : 0} />}>
           <Panel
             key={exchange.id}

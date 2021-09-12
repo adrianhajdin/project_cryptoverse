@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import millify from 'millify';
 
-import { getAllMarkets, useMarketsListSelector } from './marketsSlice';
 import './style.css';
+import { useGetMarketsQuery } from '../../services/cryptoApi';
 
 export const Markets = () => {
-  const { marketsList } = useMarketsListSelector();
-  const dispatch = useDispatch();
+  const { data: marketsList } = useGetMarketsQuery();
 
-  useEffect(() => {
-    dispatch(getAllMarkets());
-  }, []);
-
-  if (!marketsList?.markets?.length) {
+  if (!marketsList?.data?.markets?.length) {
     return (
       <div className="loading">
         loading...
@@ -32,7 +26,7 @@ export const Markets = () => {
         <p className="market-cap-title">Price</p>
         <p>Market Share</p>
       </div>
-      {marketsList.markets.map((exchange) => (
+      {marketsList?.data?.markets.map((exchange) => (
         <div key={exchange.id}>
           <div className="currency-card">
             <p className="currency-name-container ">

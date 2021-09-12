@@ -43,16 +43,17 @@ flex: 0.2;
 @media screen and (max-width:800px){
     .app{
         flex-direction: column;
+        overflow: hidden;
     }
     .navbar{
         flex: 1;
     }
     .main{
         flex: 1;
-        /* margin-left: 0px; */
         margin-top: 80px;
-        margin-left: 10px;
+        margin-left: 0px;
         margin-right: 10px;
+        padding: 20px;
 
     }
 }
