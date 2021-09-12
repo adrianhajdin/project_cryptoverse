@@ -3,26 +3,22 @@ import { useDispatch } from 'react-redux';
 import millify from 'millify';
 import { Button } from 'antd';
 import 'antd/dist/antd.css';
+import { useGetCryptosQuery } from '../../services/cryptoApi';
 
 export const AllCryptos = () => {
-  // const { cryptosList, cryptosPage } = useCryptoListSelector();
-  const dispatch = useDispatch();
+  const { data: cryptosList } = useGetCryptosQuery(100);
 
-  useEffect(() => {
-    // dispatch(getAllCryptos({ number: 20 }));
-  }, []);
-
-  if (!cryptosList?.coins.length) {
+  if (!cryptosList?.data?.coins.length) {
     return (
       <div className="loading">
-        loading...
+        <Spin />
       </div>
     );
   }
 
   return (
     <div>
-      {cryptosList?.coins?.map((coin) => (
+      {cryptosList?.data?.coins?.map((coin) => (
         <div key={coin.id}>
           <div className="currency-card">
             <p className="currency-name-container ">
