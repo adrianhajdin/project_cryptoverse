@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Select, Spin, Typography, Row, Col, Image, Avatar, Card } from 'antd';
+import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
+import { Loader } from './Loader';
 
 const demoImage = 'https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F3eeb15d1-a70f-45cd-a02a-f4a21bf36674.png?fit=scale-down&source=next&width=700';
 
@@ -15,7 +16,7 @@ export const News = ({ simplified }) => {
   const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
 
-  if (!cryptoNews?.value) return <Spin />;
+  if (!cryptoNews?.value) return <Loader />;
 
   return (
     <Row gutter={[24, 24]}>
@@ -38,17 +39,17 @@ export const News = ({ simplified }) => {
       )}
       {cryptoNews.value.map((news, i) => (
         <Col xs={24} sm={12} lg={8}>
-          <Card key={i} hoverable style={{ height: '350px' }}>
+          <Card key={i} hoverable style={{ minHeight: '300px' }}>
             <a href={news.url} target="_blank" rel="noreferrer">
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Title style={{ width: '70%' }} level={4}>{news.name}</Title>
-                <img style={{ maxWidth: '150px' }} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" />
+                <img style={{ width: '100px', height: '100px' }} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" />
               </div>
-              <p style={{ margin: '10px 0', color: 'black' }}>{news.description}</p>
+              <p style={{ margin: '10px 0', color: 'black' }}>{news.description.length > 100 ? `${news.description.substring(0, 100)}...` : news.description}</p>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>
                   <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="" />
-                  <Text>{news.provider[0]?.name}</Text>
+                  <Text style={{ marginLeft: '10px' }}>{news.provider[0]?.name}</Text>
                 </div>
                 <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
               </div>

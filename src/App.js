@@ -16,7 +16,7 @@ const App = () => (
       <Layout.Sider theme="dark" breakpoint="lg">
         <Navbar />
       </Layout.Sider>
-      <div style={{ padding: '30px' }}>
+      <div style={{ padding: '30px', margin: 'auto' }}>
         <Switch>
           <Route exact path="/">
             <Homepage />

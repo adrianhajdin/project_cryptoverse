@@ -1,15 +1,16 @@
 import React from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Spin } from 'antd';
+import { Card, Row, Col } from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
+import { Loader } from './Loader';
 
 export const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptosList } = useGetCryptosQuery(count);
 
-  if (!cryptosList?.data?.coins?.length) return <Spin />;
+  if (!cryptosList?.data?.coins?.length) return <Loader />;
 
   return (
     <>

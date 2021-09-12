@@ -2,11 +2,12 @@ import React from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Spin, Typography } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, StarOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 import './cryptoDetails.css';
 import { useGetCryptoDetailsQuery } from '../../services/cryptoApi';
+import { Loader } from '../Loader';
 
 const { Title, Text } = Typography;
 
@@ -15,8 +16,7 @@ export const CryptoDetails = () => {
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
   const cryptoDetails = data?.data?.coin;
 
-  if (isFetching) return <Spin />;
-
+  if (isFetching) return <Loader />;
   return (
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
