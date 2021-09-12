@@ -38,8 +38,8 @@ export const News = ({ simplified }) => {
         </Col>
       )}
       {cryptoNews.value.map((news, i) => (
-        <Col xs={24} sm={12} lg={8}>
-          <Card key={i} hoverable style={{ minHeight: '300px' }}>
+        <Col xs={24} sm={12} lg={8} key={i}>
+          <Card hoverable style={{ minHeight: '300px' }}>
             <a href={news.url} target="_blank" rel="noreferrer">
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Title style={{ width: '70%' }} level={4}>{news.name}</Title>

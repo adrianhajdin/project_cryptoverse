@@ -10,7 +10,7 @@ const App = () => (
   <Layout>
     <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center' }}>
       <Avatar src={icon} size="large" />
-      <Typography.Title level={2} style={{ color: 'white', margin: '0 0 0 15px' }}>Cryptoverse</Typography.Title>
+      <Typography.Title level={2} style={{ margin: '0 0 0 15px' }}><Link to="/" style={{ color: 'white' }}>Cryptoverse</Link></Typography.Title>
     </div>
     <Layout>
       <Layout.Sider theme="dark" breakpoint="lg">

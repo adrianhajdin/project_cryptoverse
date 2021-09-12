@@ -29,7 +29,7 @@ export const Homepage = () => {
       </Row>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
         <Title level={2} style={{ margin: 0 }}>Top 10 Cryptos In The World</Title>
-        <Title level={3}><Link to="/cryptos">Show more</Link></Title>
+        <Title level={3}><Link to="/cryptocurrencies">Show more</Link></Title>
       </div>
       <Cryptocurrencies simplified />
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
