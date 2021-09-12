@@ -48,28 +48,18 @@ export const News = () => {
           <div key={uuid()} className="news-card-container">
             <a href={news.url} target="_blank" className="news-card" rel="noreferrer">
               <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt="" />
-
               <div className="news-desc">
                 <h4>{news.name}</h4>
                 <div className="provider-info">
                   <img src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="" />
                   <p className="provider-name">{news.provider[0]?.name}</p>
                   <p>{moment(news.datePublished).startOf('ss').fromNow()}</p>
-
                 </div>
               </div>
             </a>
           </div>
         ))}
       </div>
-      {/* <div className="load-more">
-        {totalResult === cryptoNews?.value?.length ? '' : (
-          <Button onClick={() => dispatch(loadMoreCryptosNews({ newsCategory, result: (page * 12) }))} className="load-more-btn">
-            Load More
-          </Button>
-        )}
-      </div> */}
     </div>
-
   );
 };

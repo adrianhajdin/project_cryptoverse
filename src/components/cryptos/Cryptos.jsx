@@ -1,8 +1,7 @@
 import React from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-
-import './cryptos.css';
+import { Card, Row, Col } from 'antd';
 
 export const Cryptos = ({ data }) => {
   if (!data) {
@@ -14,23 +13,18 @@ export const Cryptos = ({ data }) => {
   }
 
   return (
-    <div className="cryptos-container">
+    <Row gutter={[32, 32]}>
       {data.map((currency) => (
-        <Link key={currency.id} className="currency-grid-card" to={`/crypto/${currency.id}`}>
-          <div className="currency-grid-desc">
-            <p className="currency-grid-name">
-              <span className="currency-grid-rank">  {currency.rank}.</span>
-              <img className="currency-grid-image" src={currency.iconUrl} />
-              <span className="curreny-grid-name">{currency.name}</span>
-            </p>
-            <p className="currency-price">${currency.price && millify(currency.price)} </p>
-          </div>
-          <div className="currency-grid-market">
-            <p className="currency-grid-market-cap">${currency.marketCap && millify(currency.marketCap)}</p>
-            <p>{currency.change}%</p>
-          </div>
-        </Link>
+        <Col xs={24} sm={12} lg={6}>
+          <Link key={currency.id} to={`/crypto/${currency.id}`}>
+            <Card title={`${currency.rank}. ${currency.name}`} extra={<img style={{ width: '35px' }} src={currency.iconUrl} />} hoverable>
+              <p>Price: {millify(currency.price)}</p>
+              <p>Market Cap: {millify(currency.marketCap)}</p>
+              <p>Daily Change: {currency.change}%</p>
+            </Card>
+          </Link>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };
