@@ -1,11 +1,13 @@
 import React from 'react';
 import { AiFillCaretRight } from 'react-icons/ai';
 import millify from 'millify';
-import { Collapse, Spin } from 'antd';
+import { Collapse, Spin, Row, Col, Typography, Space } from 'antd';
 import HTMLReactParser from 'html-react-parser';
 
 import './exchanges.css';
 import { useGetExchangesQuery } from '../../services/cryptoApi';
+
+const { Title, Text } = Typography;
 
 export const Exchanges = () => {
   const { Panel } = Collapse;
@@ -21,34 +23,31 @@ export const Exchanges = () => {
 
   return (
     <div className="exchanges-container">
-      <div>
-        <h2 className="home-heading">Top Crypto Exchanges</h2>
-      </div>
-      <div className="table-heading ">
-        <p>Exchanges</p>
-        <p>24h Trade Volume</p>
-        <p className="market-cap-title">Markets</p>
-        <p>Change</p>
-      </div>
+      <Title level={2} style={{ marginTop: '50px', marginBottom: '30px' }}>All Crypto Exchanges</Title>
+
+      <Row className="table-heading ">
+        <Col span={6}>Exchanges</Col>
+        <Col span={6}>24h Trade Volume</Col>
+        <Col span={6} className="market-cap-title">Markets</Col>
+        <Col span={6}>Change</Col>
+      </Row>
       {exchangesList?.map((exchange) => (
         <Collapse bordered={false} expandIcon={({ isActive }) => <AiFillCaretRight rotate={isActive ? 90 : 0} />}>
           <Panel
             key={exchange.id}
             header={(
-              <div key={exchange.id}>
-                <div className="currency-card">
-                  <p className="currency-name-container ">
-                    <span className="currency-rank">  {exchange.rank}.</span>
-                    <img className="currency-image" src={exchange.iconUrl} />
-                    <span className="curreny-name">{exchange.name}</span>
-                  </p>
-                  <div className="currency-container">
-                    <p className="currency-price">${exchange.volume && millify(exchange.volume)} </p>
-                  </div>
-                  <p className="currency-market-cap">{exchange.numberOfMarkets && millify(exchange.numberOfMarkets)}</p>
-                  <p>{exchange.marketShare && millify(exchange.marketShare)}%</p>
-                </div>
-              </div>
+              <Row className="currency-card" key={exchange.id}>
+                <Col span={6} className="currency-name-container ">
+                  <span className="currency-rank">  {exchange.rank}.</span>
+                  <img className="currency-image" src={exchange.iconUrl} />
+                  <span className="curreny-name" style={{ marginLeft: '10px' }}>{exchange.name}</span>
+                </Col>
+                <Col span={6} className="currency-container">
+                  <p className="currency-price">${exchange.volume && millify(exchange.volume)} </p>
+                </Col>
+                <Col span={6} className="currency-market-cap">{exchange.numberOfMarkets && millify(exchange.numberOfMarkets)}</Col>
+                <Col span={6}>{exchange.marketShare && millify(exchange.marketShare)}%</Col>
+              </Row>
             )}
           >
             {exchange.description && HTMLReactParser(exchange.description)}
@@ -58,3 +57,4 @@ export const Exchanges = () => {
     </div>
   );
 };
+

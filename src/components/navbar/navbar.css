@@ -6,61 +6,41 @@
      margin: 0px;
      width: 256px;
      border-right: 1px solid var(--border);
+     border-bottom: 1px solid var(--border);
  }
  .logo-container{
      margin-bottom: 20px;
  }
  .logo{
-     font-weight: 900;
-     padding: 20px 0px 10px 20px;
-     font-size: 1.5rem;
-     color: var(--pink);
+     padding: 10px 0px 10px 20px;
+     color: var(--pink) !important;
+ }
+ h3.ant-typography, .ant-typography h3{
+     font-weight: 800 !important;
  }
  .menu-control-container{
-     display: none;
-     position: absolute;
-    right: 10px;
-    top: 25px;
-    font-size: 1.4rem;
+     display: none !important;
+     position: absolute !important;
+    right: 10px !important;
+    top: 15px !important;
+    font-size: 1.2rem !important;
+    background-color: var(--bgSecondary) !important;
+    border: none !important;
 }
 
-
-.ant-menu-item-selected a, .ant-menu-item-selected a:hover{
-    color: var(--pink)
-}
-.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
-    border-right: 3px solid var(--pink);
-}
-.ant-menu-item-selected{
-    color: var(--pink);
-}
-.ant-menu-submenu-selected{
-    color: var(--pink);
-}
-.ant-menu-submenu-item:hover{
-    color: var(--pink);
-}
-.ant-menu-arrow:hover{
-    color:var(--pink);
-}
-.ant-menu-submenu-arrow{
-    color: var(--pink);
-}
-.ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
-    color: var(--pink);
-}
 @media screen and (max-width:800px){
     .nav-container{
         height: 8vh;
         position:fixed;
         width: 100%;
         z-index: 100;
+        background-color: var(--bgSecondary);
     }
     .logo{
         margin: 0px;
     }
     .menu-control-container{
-     display: block;
+     display: block !important;
     }
     .ant-menu{
         position: absolute;

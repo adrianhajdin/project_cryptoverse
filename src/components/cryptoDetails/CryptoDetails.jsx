@@ -2,19 +2,13 @@ import React from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { RiPriceTagLine } from 'react-icons/ri';
-import { SiSourcegraph, SiMarketo } from 'react-icons/si';
-import { GiBoltDrop } from 'react-icons/gi';
-import { TiWavesOutline } from 'react-icons/ti';
-import { FcCurrencyExchange } from 'react-icons/fc';
-import { BiMedal } from 'react-icons/bi';
-import { GoVerified } from 'react-icons/go';
-import { BsInfoCircle } from 'react-icons/bs';
-import { CgDanger } from 'react-icons/cg';
-import { Spin } from 'antd';
+import { Col, Row, Spin, Typography } from 'antd';
+import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, StarOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 import './cryptoDetails.css';
 import { useGetCryptoDetailsQuery } from '../../services/cryptoApi';
+
+const { Title, Text } = Typography;
 
 export const CryptoDetails = () => {
   const { coinId } = useParams();
@@ -29,112 +23,118 @@ export const CryptoDetails = () => {
   }
 
   return (
-    <div className="coin-detail-container">
-      <div className="coin-heading-container">
-        <div className="coin-name">
+    <Col className="coin-detail-container">
+      <Col className="coin-heading-container">
+        <Title level={2} className="coin-name">
           {data?.data?.coin.name} ({data?.data?.coin.slug}) Price
-        </div>
+        </Title>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
-      </div>
-      <div className="stats-container">
-        <div className="coin-value-statistics">
-          <div className="coin-value-statistics-heading">
-            <h2>{cryptoDetails.name} value statistics</h2>
+      </Col>
+      <Col className="stats-container">
+        <Col className="coin-value-statistics">
+          <Col className="coin-value-statistics-heading">
+            <Title level={3} className="coin-details-heading">{cryptoDetails.name} Value Statistics</Title>
+
+            <Text>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><DollarCircleOutlined /></Text>
+              <Text>Price to USD</Text>
+            </Col>
+            <Text className="stats">$ {cryptoDetails.price && millify(cryptoDetails.price)}</Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><NumberOutlined /></Text>
+              <Text>Rank</Text>
+            </Col>
+            <Text className="stats">{cryptoDetails.rank} </Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><ThunderboltOutlined /></Text>
+              <Text>24h Volume</Text>
+            </Col>
+            <Text className="stats">$ {cryptoDetails.volume && millify(cryptoDetails.volume)}</Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><StarOutlined /></Text>
+              <Text>Market Cap</Text>
+            </Col>
+            <Text className="stats">$ {cryptoDetails.marketCap && millify(cryptoDetails.marketCap)}</Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><TrophyOutlined /></Text>
+              <Text>All-time-high(daily avg.)</Text>
+            </Col>
+            <Text className="stats">$ {cryptoDetails.allTimeHigh.price && millify(cryptoDetails.allTimeHigh.price)}</Text>
+          </Col>
+        </Col>
+        <Col className="other-stats-info">
+          <Col className="coin-value-statistics-heading">
+            <Title level={3} className="coin-details-heading">Other Stats Info</Title>
+
             <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><RiPriceTagLine /></p>
-              <p>Price to USD</p>
-            </div>
-            <p className="stats">$ {cryptoDetails.price && millify(cryptoDetails.price)}</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><SiSourcegraph /></p>
-              <p>Rank</p>
-            </div>
-            <p className="stats">{cryptoDetails.rank} </p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><GiBoltDrop /></p>
-              <p>24h Volume</p>
-            </div>
-            <p className="stats">$ {cryptoDetails.volume && millify(cryptoDetails.volume)}</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><TiWavesOutline /></p>
-              <p>Market Cap</p>
-            </div>
-            <p className="stats">$ {cryptoDetails.marketCap && millify(cryptoDetails.marketCap)}</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><BiMedal /></p>
-              <p>All-time-high(daily avg.)</p>
-            </div>
-            <p className="stats">$ {cryptoDetails.allTimeHigh.price && millify(cryptoDetails.allTimeHigh.price)}</p>
-          </div>
-        </div>
-        <div className="other-stats-info">
-          <div className="coin-value-statistics-heading">
-            <h2>Other Stats Info</h2>
-            <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><SiMarketo /></p>
-              <p>Number Of Markets</p>
-            </div>
-            <p className="stats">{cryptoDetails.numberOfMarkets} </p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><FcCurrencyExchange /></p>
-              <p>Number Of Exchanges</p>
-            </div>
-            <p className="stats"> {cryptoDetails.numberOfExchanges}</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><BsInfoCircle /></p>
-              <p>Aprroved Supply</p>
-            </div>
-            <p className="stats">{cryptoDetails.approvedSupply ? <GoVerified /> : <CgDanger />}</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><BsInfoCircle /></p>
-              <p>Total Supply</p>
-            </div>
-            <p className="stats">$ {cryptoDetails.totalSupply && millify(cryptoDetails.totalSupply)}</p>
-          </div>
-          <div className="coin-stats">
-            <div className="coin-stats-name">
-              <p><BsInfoCircle /></p>
-              <p>Circulating Supply</p>
-            </div>
-            <p className="stats">$ {cryptoDetails.circulatingSupply && millify(cryptoDetails.circulatingSupply)}</p>
-          </div>
-        </div>
-      </div>
-      <div className="coin-desc-link">
-        <div className="coin-desc">
-          <h2>What is {cryptoDetails.name}?</h2>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text>
+                <FundOutlined />
+              </Text>
+              <Text>Number Of Markets</Text>
+            </Col>
+            <Text className="stats">{cryptoDetails.numberOfMarkets} </Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><MoneyCollectOutlined /></Text>
+              <Text>Number Of Exchanges</Text>
+            </Col>
+            <Text className="stats">{cryptoDetails.numberOfExchanges} </Text>
+          </Col>
+
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><ExclamationCircleOutlined /></Text>
+              <Text>Aprroved Supply</Text>
+            </Col>
+            <Text className="stats">{cryptoDetails.approvedSupply ? <CheckOutlined /> : <StopOutlined />}</Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><ExclamationCircleOutlined /></Text>
+              <Text>Total Supply</Text>
+            </Col>
+            <Text className="stats">$ {cryptoDetails.totalSupply && millify(cryptoDetails.totalSupply)}</Text>
+          </Col>
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+              <Text><ExclamationCircleOutlined /></Text>
+              <Text>Circulating Supply</Text>
+            </Col>
+            <Text className="stats">$ {cryptoDetails.circulatingSupply && millify(cryptoDetails.circulatingSupply)}</Text>
+          </Col>
+        </Col>
+      </Col>
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title level={3} className="coin-details-heading">What is {cryptoDetails.name}?</Title>
+
           {cryptoDetails.description && HTMLReactParser(cryptoDetails.description)}
-        </div>
-        <div className="coin-links">
-          <h2>{cryptoDetails.name} Links</h2>
+        </Row>
+        <Col className="coin-links">
+          <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
           { cryptoDetails.links?.map((link) => (
-            <div className="coin-link" key={link.name}>
-              <p className="link-name">{link.type}</p>
+            <Row className="coin-link" key={link.name}>
+              <Title level={5} className="link-name">{link.type}</Title>
               <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
-            </div>
+            </Row>
           ))}
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Col>
+    </Col>
   );
 };

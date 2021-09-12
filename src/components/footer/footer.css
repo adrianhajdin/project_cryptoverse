@@ -10,10 +10,3 @@
     opacity: 0.8;
 }
 
-.footer a{
-    color: var(--pink);
-}
-.footer-links{
-    display: flex;
-    gap: 20px;
-}

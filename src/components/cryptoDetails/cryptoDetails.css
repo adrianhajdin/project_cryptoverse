@@ -13,9 +13,8 @@
     gap: 10px;
 }
 .coin-heading-container .coin-name{
-    font-weight: 800;
+    font-weight: 900;
     color: var(--pink);
-    font-size: 1.7rem;
 }
 .coin-heading-container p{
     font-size: 1rem;
@@ -35,13 +34,19 @@
     margin-top: 20px;
     color: var(--pink);
 }
+.coin-details-heading{
+    font-weight: 700 !important;
+    /* font-size: 1.4rem !; */
+    margin-top: 20px !important;
+    color: var(--pink) !important;
+}
 .coin-stats{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--border);
     font-size: 1rem;
     opacity: 0.9;
-    padding: 10px;
+    padding: 20px;
 
 }
 

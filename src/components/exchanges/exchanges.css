@@ -65,6 +65,10 @@ display: none;
 }
 .currency-container p{
     margin-bottom: 0px;
+}@media screen and (max-width:800px){
+   .exchanges-container{
+    margin-top: 50px;
+   }
 }
 @media screen and (max-width:500px){
     .currency-card{
