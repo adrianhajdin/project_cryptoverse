@@ -37,7 +37,7 @@ export const News = ({ simplified }) => {
         </Col>
       )}
       {cryptoNews.value.map((news, i) => (
-        <Col span={8}>
+        <Col xs={24} sm={12} lg={8}>
           <Card key={i} hoverable style={{ height: '350px' }}>
             <a href={news.url} target="_blank" rel="noreferrer">
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
