@@ -38,7 +38,7 @@ export const Navbar = () => {
         <div className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><AiOutlineMenu /></div>
       </div>
       {activeMenu && (
-        <Menu style={{ width: 256 }} mode="inline">
+        <Menu mode="inline">
           <Menu.Item key="1" icon={<AiFillHome />}>
             <Link to="/">Home</Link>
           </Menu.Item>

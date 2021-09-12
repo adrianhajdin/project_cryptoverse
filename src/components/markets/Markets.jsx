@@ -1,47 +1,62 @@
 import React from 'react';
 import millify from 'millify';
+import { Spin, Table, Typography } from 'antd';
 
-import './style.css';
 import { useGetMarketsQuery } from '../../services/cryptoApi';
 
 export const Markets = () => {
-  const { data: marketsList } = useGetMarketsQuery();
+  const { data: marketsList, isFetching } = useGetMarketsQuery();
+  const { Text, Title } = Typography;
 
-  if (!marketsList?.data?.markets?.length) {
+  if (isFetching) {
     return (
       <div className="loading">
-        loading...
+        <Spin />
       </div>
     );
   }
 
+  const columns = [
+    {
+      title: 'Markets',
+      dataIndex: 'sourceIconUrl',
+      render: (sourceIconUrl) => <p> <img style={{ width: '30px', height: '30px' }} src={sourceIconUrl} /></p>,
+    },
+    {
+      title: '24h Trade Volume',
+      dataIndex: 'volume',
+      render: (volume) => <Text>$ {millify(volume)}</Text>,
+      sorter: {
+        compare: (a, b) => a.volume - b.volume,
+        multiple: 3,
+      },
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      render: (price) => <Text>$ {millify(price)}</Text>,
+      sorter: {
+        compare: (a, b) => a.price - b.price,
+        multiple: 2,
+      },
+    },
+    {
+      title: 'Market Share',
+      dataIndex: 'marketShare',
+      render: (marketShare) => <Text>$ {millify(marketShare)}</Text>,
+      sorter: {
+        compare: (a, b) => a.marketShare - b.marketShare,
+        multiple: 1,
+      },
+    },
+  ];
+  // function onChange(pagination, filters, sorter, extra) {
+  //   console.log('params', pagination, filters, sorter, extra);
+  // }
   return (
-    <div className="exchanges-container">
-      <div>
-        <h2 className="home-heading">Top Crypto Markets</h2>
-      </div>
-      <div className="table-heading ">
-        <p>Markets</p>
-        <p>24h Trade Volume</p>
-        <p className="market-cap-title">Price</p>
-        <p>Market Share</p>
-      </div>
-      {marketsList?.data?.markets.map((exchange) => (
-        <div key={exchange.id}>
-          <div className="currency-card">
-            <p className="currency-name-container ">
-              <span className="currency-rank">{exchange.rank}.</span>
-              <img className="currency-image" src={exchange.sourceIconUrl} />
-              <span className="curreny-name">{exchange.baseSymbol}/{exchange.quoteSymbol}</span>
-            </p>
-            <div className="currency-container">
-              <p className="currency-price">${millify(exchange.volume)}</p>
-            </div>
-            <p className="currency-market-cap">${millify(exchange.price)}</p>
-            <p>{millify(exchange.marketShare)}%</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <>
+      <Title level={2} style={{ marginTop: '50px', marginBottom: '30px' }}>Top Crypto Markets</Title>
+      <Table columns={columns} dataSource={marketsList?.data?.markets} />
+    </>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillCaretRight } from 'react-icons/ai';
 import millify from 'millify';
-import { Collapse } from 'antd';
+import { Collapse, Spin } from 'antd';
 import HTMLReactParser from 'html-react-parser';
 
 import './exchanges.css';
@@ -14,7 +14,7 @@ export const Exchanges = () => {
   if (!exchangesList?.length) {
     return (
       <div className="loading">
-        loading...
+        <Spin />
       </div>
     );
   }

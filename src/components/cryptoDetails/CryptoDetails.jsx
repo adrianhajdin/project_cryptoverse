@@ -1,6 +1,5 @@
+import React from 'react';
 import HTMLReactParser from 'html-react-parser';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
 import { RiPriceTagLine } from 'react-icons/ri';
@@ -12,18 +11,19 @@ import { BiMedal } from 'react-icons/bi';
 import { GoVerified } from 'react-icons/go';
 import { BsInfoCircle } from 'react-icons/bs';
 import { CgDanger } from 'react-icons/cg';
+import { Spin } from 'antd';
 
 import './cryptoDetails.css';
 import { useGetCryptoDetailsQuery } from '../../services/cryptoApi';
 
 export const CryptoDetails = () => {
   const { coinId } = useParams();
-  const { data } = useGetCryptoDetailsQuery(coinId);
+  const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
   const cryptoDetails = data?.data?.coin;
-  if (!cryptoDetails) {
+  if (isFetching) {
     return (
       <div className="loading">
-        loading...
+        <Spin />
       </div>
     );
   }

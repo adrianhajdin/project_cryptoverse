@@ -30,6 +30,13 @@ flex: 0.2;
     flex: 0.8;
     width: 100%;
 }
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    margin: auto;
+}
 @media screen and (max-width:1170px){
     .main{
         margin-left: 50px;
@@ -50,7 +57,7 @@ flex: 0.2;
     }
     .main{
         flex: 1;
-        margin-top: 80px;
+        margin-top: 50px;
         margin-left: 0px;
         margin-right: 10px;
         padding: 20px;

@@ -2,9 +2,10 @@
      position: fixed;
      left: 0;
      margin: 10px;
-     background-color: var(--bgSecondary);
      height: 100vh;
      margin: 0px;
+     width: 256px;
+     border-right: 1px solid var(--border);
  }
  .logo-container{
      margin-bottom: 20px;
@@ -22,6 +23,7 @@
     top: 25px;
     font-size: 1.4rem;
 }
+
 
 .ant-menu-item-selected a, .ant-menu-item-selected a:hover{
     color: var(--pink)
@@ -60,4 +62,9 @@
     .menu-control-container{
      display: block;
     }
+    .ant-menu{
+        position: absolute;
+        right: 0px;
+    }
+    
 }
