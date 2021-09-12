@@ -14,13 +14,8 @@ export const CryptoDetails = () => {
   const { coinId } = useParams();
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
   const cryptoDetails = data?.data?.coin;
-  if (isFetching) {
-    return (
-      <div className="loading">
-        <Spin />
-      </div>
-    );
-  }
+
+  if (isFetching) return <Spin />;
 
   return (
     <Col className="coin-detail-container">
@@ -95,7 +90,6 @@ export const CryptoDetails = () => {
             </Col>
             <Text className="stats">{cryptoDetails.numberOfExchanges} </Text>
           </Col>
-
           <Col className="coin-stats">
             <Col className="coin-stats-name">
               <Text><ExclamationCircleOutlined /></Text>
@@ -122,8 +116,7 @@ export const CryptoDetails = () => {
       <Col className="coin-desc-link">
         <Row className="coin-desc">
           <Title level={3} className="coin-details-heading">What is {cryptoDetails.name}?</Title>
-
-          {cryptoDetails.description && HTMLReactParser(cryptoDetails.description)}
+          {HTMLReactParser(cryptoDetails.description)}
         </Row>
         <Col className="coin-links">
           <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
