@@ -1,22 +1,13 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Typography, Avatar, Space } from 'antd';
+import { Layout, Typography, Space } from 'antd';
 
 import { Exchanges, Homepage, News, Cryptocurrencies, CryptoDetails, Navbar } from './components';
-import icon from './cryptocurrency.png';
 import './App.css';
 
 const App = () => (
   <div style={{ display: 'flex' }} className="app">
-    {/* <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center', width: '100%' }}>
-      <Avatar src={icon} size="large" />
-      <Typography.Title level={2} style={{ margin: '0 0 0 15px' }}><Link to="/" style={{ color: 'white' }}>Cryptoverse</Link></Typography.Title>
-      <Space>
-        <Link to="/">Home</Link>
-        <Link to="/exchanges">Exchanges</Link>
-        <Link to="/news">News</Link>
-      </Space>
-    </div> */}
+
     <div className="navbar">
       <Navbar style={{ flex: '0.2' }} />
 

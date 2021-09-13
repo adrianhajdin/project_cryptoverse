@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Button, Col, Row, Space, Typography, Select } from 'antd';
+import { Col, Row, Typography, Select } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, StarOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 import './cryptoDetails.css';
@@ -42,7 +42,7 @@ export const CryptoDetails = () => {
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">{cryptoDetails.name} Value Statistics</Title>
 
-            <Text>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</Text>
+            <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
           </Col>
           <Col className="coin-stats">
             <Col className="coin-stats-name">
@@ -133,7 +133,7 @@ export const CryptoDetails = () => {
         <Col className="coin-links">
           <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
           { cryptoDetails.links?.map((link) => (
-            <Row className="coin-link" key={link.name}>
+            <Row className="coin-link" key={link.name} style={{ padding: '20px' }}>
               <Title level={5} className="link-name">{link.type}</Title>
               <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
             </Row>
