@@ -7,15 +7,17 @@ import icon from './cryptocurrency.png';
 import './App.css';
 
 const App = () => (
-  <Layout>
-    <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center' }}>
+  <>
+    <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center', width: '100%' }}>
       <Avatar src={icon} size="large" />
       <Typography.Title level={2} style={{ margin: '0 0 0 15px' }}><Link to="/" style={{ color: 'white' }}>Cryptoverse</Link></Typography.Title>
+      <Space>
+        <Link to="/">Home</Link>
+        <Link to="/exchanges">Exchanges</Link>
+        <Link to="/news">News</Link>
+      </Space>
     </div>
     <Layout>
-      <Layout.Sider theme="dark" breakpoint="lg">
-        <Navbar />
-      </Layout.Sider>
       <div style={{ padding: '30px', margin: 'auto' }}>
         <Switch>
           <Route exact path="/">
@@ -37,14 +39,14 @@ const App = () => (
       </div>
     </Layout>
     <div style={{ backgroundColor: '#001529', display: 'flex', flexDirection: 'column', padding: '20px', alignItems: 'center' }}>
-      <Typography.Title level={5} style={{ color: 'white' }}>Copyright © 2021 <Link to="/">Cryptoverse Inc.</Link> All Rights Reserved.</Typography.Title>
+      <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2021 <Link to="/">Cryptoverse Inc.</Link> <br /> All Rights Reserved.</Typography.Title>
       <Space>
         <Link to="/">Home</Link>
         <Link to="/exchanges">Exchanges</Link>
         <Link to="/news">News</Link>
       </Space>
     </div>
-  </Layout>
+  </>
 );
 
 export default App;
