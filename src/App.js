@@ -7,10 +7,8 @@ import './App.css';
 
 const App = () => (
   <div style={{ display: 'flex' }} className="app">
-
     <div className="navbar">
       <Navbar style={{ flex: '0.2' }} />
-
     </div>
     <div style={{ flex: '0.8' }} className="main">
       <Layout>

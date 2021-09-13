@@ -33,12 +33,9 @@ export const Navbar = () => {
         <Avatar src={icon} size="large" />
         <Typography.Title level={2} style={{ margin: '0 0 0 15px' }}><Link to="/" style={{ color: 'white' }}>Cryptoverse</Link></Typography.Title>
         <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
-
       </div>
-
       {activeMenu && (
       <Menu theme="dark">
-
         <Menu.Item icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
         </Menu.Item>

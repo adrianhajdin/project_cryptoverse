@@ -49,7 +49,6 @@ export const Exchanges = () => {
           </Col>
         ))}
       </Row>
-
     </>
   );
 };

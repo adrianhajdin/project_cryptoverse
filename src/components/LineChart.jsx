@@ -12,14 +12,16 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     coinPrice.push(coinHistory?.data?.history[i].price);
   }
+
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
     const date = new Date(coinHistory?.data?.history[i].timestamp);
+
     coinTimestamp.push(date.toLocaleDateString());
   }
+
   const data = {
     labels: coinTimestamp,
     datasets: [
-
       {
         label: 'Price In USD',
         data: coinPrice,
@@ -29,6 +31,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
       },
     ],
   };
+
   const options = {
     scales: {
       yAxes: [
@@ -40,6 +43,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
       ],
     },
   };
+
   return (
     <>
       <Row style={{ gap: '50px', display: 'flex', justifyContent: 'space-between', color: '#0071bd' }}>
@@ -48,11 +52,10 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
           <Title level={5} style={{ fontWeight: '900' }}>Change: {coinHistory?.data?.change}%</Title>
           <Title level={5} style={{ marginTop: '0px', fontWeight: '900' }}>Current {coinName} Price: $ {currentPrice}</Title>
         </Col>
-
       </Row>
       <Line data={data} options={options} />
     </>
-);
+  );
 };
 
 export default LineChart;

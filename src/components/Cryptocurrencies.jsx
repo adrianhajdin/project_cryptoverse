@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Input, Result } from 'antd';
+import { Card, Row, Col, Input } from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import { Loader } from './Loader';
@@ -21,16 +21,6 @@ export const Cryptocurrencies = ({ simplified }) => {
   }, [cryptosList, searchTerm]);
 
   if (isFetching) return <Loader />;
-
-  if (!cryptos?.length) {
-    return (
-      <Result
-        status="404"
-        title="Oops! Search Something Else."
-        subTitle="Sorry, This cryptocurrency didn't exist."
-      />
-    );
-  }
 
   return (
     <>

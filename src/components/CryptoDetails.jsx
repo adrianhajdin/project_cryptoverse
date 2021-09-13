@@ -5,9 +5,8 @@ import millify from 'millify';
 import { Col, Row, Typography, Select } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, StarOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
-import './cryptoDetails.css';
-import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../../services/cryptoApi';
-import { Loader } from '../Loader';
+import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi';
+import { Loader } from './Loader';
 import LineChart from './LineChart';
 
 const { Title, Text } = Typography;
@@ -22,6 +21,7 @@ export const CryptoDetails = () => {
   const cryptoDetails = data?.data?.coin;
 
   if (isFetching) return <Loader />;
+
   return (
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
@@ -36,12 +36,10 @@ export const CryptoDetails = () => {
         ))}
       </Select>
       <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name} />
-
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">{cryptoDetails.name} Value Statistics</Title>
-
             <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
           </Col>
           <Col className="coin-stats">
@@ -83,7 +81,6 @@ export const CryptoDetails = () => {
         <Col className="other-stats-info">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">Other Stats Info</Title>
-
             <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
           </Col>
           <Col className="coin-stats">
@@ -132,7 +129,7 @@ export const CryptoDetails = () => {
         </Row>
         <Col className="coin-links">
           <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
-          { cryptoDetails.links?.map((link) => (
+          {cryptoDetails.links?.map((link) => (
             <Row className="coin-link" key={link.name} style={{ padding: '20px' }}>
               <Title level={5} className="link-name">{link.type}</Title>
               <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
