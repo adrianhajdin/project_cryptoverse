@@ -7,8 +7,8 @@ import icon from './cryptocurrency.png';
 import './App.css';
 
 const App = () => (
-  <>
-    <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center', width: '100%' }}>
+  <div style={{ display: 'flex' }} className="app">
+    {/* <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center', width: '100%' }}>
       <Avatar src={icon} size="large" />
       <Typography.Title level={2} style={{ margin: '0 0 0 15px' }}><Link to="/" style={{ color: 'white' }}>Cryptoverse</Link></Typography.Title>
       <Space>
@@ -16,37 +16,44 @@ const App = () => (
         <Link to="/exchanges">Exchanges</Link>
         <Link to="/news">News</Link>
       </Space>
+    </div> */}
+    <div className="navbar">
+      <Navbar style={{ flex: '0.2' }} />
+
     </div>
-    <Layout>
-      <div style={{ padding: '30px', margin: 'auto' }}>
-        <Switch>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
-          <Route exact path="/exchanges">
-            <Exchanges />
-          </Route>
-          <Route exact path="/cryptocurrencies">
-            <Cryptocurrencies />
-          </Route>
-          <Route exact path="/crypto/:coinId">
-            <CryptoDetails />
-          </Route>
-          <Route exact path="/news">
-            <News />
-          </Route>
-        </Switch>
+    <div style={{ flex: '0.8' }} className="main">
+      <Layout>
+        <div style={{ padding: '30px', margin: 'auto' }}>
+          <Switch>
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+            <Route exact path="/exchanges">
+              <Exchanges />
+            </Route>
+            <Route exact path="/cryptocurrencies">
+              <Cryptocurrencies />
+            </Route>
+            <Route exact path="/crypto/:coinId">
+              <CryptoDetails />
+            </Route>
+            <Route exact path="/news">
+              <News />
+            </Route>
+          </Switch>
+        </div>
+      </Layout>
+      <div style={{ backgroundColor: '#001529', display: 'flex', flexDirection: 'column', padding: '20px', alignItems: 'center' }}>
+        <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2021 <Link to="/">Cryptoverse Inc.</Link> <br /> All Rights Reserved.</Typography.Title>
+        <Space>
+          <Link to="/">Home</Link>
+          <Link to="/exchanges">Exchanges</Link>
+          <Link to="/news">News</Link>
+        </Space>
       </div>
-    </Layout>
-    <div style={{ backgroundColor: '#001529', display: 'flex', flexDirection: 'column', padding: '20px', alignItems: 'center' }}>
-      <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2021 <Link to="/">Cryptoverse Inc.</Link> <br /> All Rights Reserved.</Typography.Title>
-      <Space>
-        <Link to="/">Home</Link>
-        <Link to="/exchanges">Exchanges</Link>
-        <Link to="/news">News</Link>
-      </Space>
     </div>
-  </>
+
+  </div>
 );
 
 export default App;
