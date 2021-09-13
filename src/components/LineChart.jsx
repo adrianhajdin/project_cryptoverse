@@ -46,11 +46,11 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
 
   return (
     <>
-      <Row style={{ gap: '50px', display: 'flex', justifyContent: 'space-between', color: '#0071bd' }}>
-        <Title level={2} style={{ color: '#0071bd' }}>{coinName} Price Chart </Title>
-        <Col style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <Title level={5} style={{ fontWeight: '900' }}>Change: {coinHistory?.data?.change}%</Title>
-          <Title level={5} style={{ marginTop: '0px', fontWeight: '900' }}>Current {coinName} Price: $ {currentPrice}</Title>
+      <Row className="chart-header">
+        <Title level={2} className="chart-title">{coinName} Price Chart </Title>
+        <Col className="price-container">
+          <Title level={5} className="price-change">Change: {coinHistory?.data?.change}%</Title>
+          <Title level={5} className="current-price">Current {coinName} Price: $ {currentPrice}</Title>
         </Col>
       </Row>
       <Line data={data} options={options} />

@@ -32,9 +32,9 @@ export const Exchanges = () => {
                 showArrow={false}
                 header={(
                   <Row key={exchange.id}>
-                    <Col span={6} className="currency-name-container ">
+                    <Col span={6}>
                       <Text><strong>{exchange.rank}.</strong></Text>
-                      <Avatar style={{ margin: '0 10px' }} src={exchange.iconUrl} />
+                      <Avatar className="exchange-image" src={exchange.iconUrl} />
                       <Text><strong>{exchange.name}</strong></Text>
                     </Col>
                     <Col span={6}>${millify(exchange.volume)}</Col>

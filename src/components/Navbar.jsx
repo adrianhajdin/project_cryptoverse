@@ -29,9 +29,9 @@ export const Navbar = () => {
 
   return (
     <div className="nav-container">
-      <div style={{ backgroundColor: '#001529', display: 'flex', padding: '20px', alignItems: 'center', width: '100%' }}>
+      <div className="logo-container">
         <Avatar src={icon} size="large" />
-        <Typography.Title level={2} style={{ margin: '0 0 0 15px' }}><Link to="/" style={{ color: 'white' }}>Cryptoverse</Link></Typography.Title>
+        <Typography.Title level={2} className="logo"><Link to="/">Cryptoverse</Link></Typography.Title>
         <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
       </div>
       {activeMenu && (

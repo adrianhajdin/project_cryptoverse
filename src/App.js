@@ -6,13 +6,13 @@ import { Exchanges, Homepage, News, Cryptocurrencies, CryptoDetails, Navbar } fr
 import './App.css';
 
 const App = () => (
-  <div style={{ display: 'flex' }} className="app">
+  <div className="app">
     <div className="navbar">
-      <Navbar style={{ flex: '0.2' }} />
+      <Navbar />
     </div>
-    <div style={{ flex: '0.8' }} className="main">
+    <div className="main">
       <Layout>
-        <div style={{ padding: '30px', margin: 'auto' }}>
+        <div className="routes">
           <Switch>
             <Route exact path="/">
               <Homepage />

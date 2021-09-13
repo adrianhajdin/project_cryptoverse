@@ -25,15 +25,15 @@ export const Cryptocurrencies = ({ simplified }) => {
   return (
     <>
       {!simplified && (
-        <div style={{ margin: '20px auto 30px auto', width: '250px' }}>
+        <div className="search-crypto">
           <Input placeholder="Search Cryptocurrency" onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
         </div>
       )}
-      <Row gutter={[32, 32]} style={{ minHeight: '65vh' }}>
+      <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (
-          <Col xs={24} sm={12} lg={6} style={{ minWidth: '250px' }} key={currency.id}>
+          <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
             <Link key={currency.id} to={`/crypto/${currency.id}`}>
-              <Card title={`${currency.rank}. ${currency.name}`} extra={<img style={{ width: '35px' }} src={currency.iconUrl} />} hoverable>
+              <Card title={`${currency.rank}. ${currency.name}`} extra={<img className="crypto-image" src={currency.iconUrl} />} hoverable>
                 <p>Price: {millify(currency.price)}</p>
                 <p>Market Cap: {millify(currency.marketCap)}</p>
                 <p>Daily Change: {currency.change}%</p>

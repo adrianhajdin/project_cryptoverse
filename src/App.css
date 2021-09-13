@@ -31,8 +31,11 @@ a:hover{
 .main{
     flex: 0.8;
     width: 100%;
+    
 }
-
+.routes{
+    padding: 20px;
+}
 .nav-container{
     position: fixed;
     left: 0;
@@ -42,7 +45,19 @@ a:hover{
     background-color: rgb(0, 21, 41);
 }
 
-
+.logo-container{
+    background-color: #001529;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
+}
+.logo{
+    margin:0 0 0 15px;
+}
+.logo a{
+   color: white;
+}
 .menu-control-container{
     display: none !important;
     position: absolute !important;
@@ -53,7 +68,12 @@ a:hover{
     border: none !important;
 }
 
-
+.loader{
+    height: 81vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media screen and (max-width:1300px){
     .main{
@@ -85,7 +105,7 @@ a:hover{
 
     .main{
         flex: 1;
-        margin-top: 50px;
+        margin-top: 90px;
         margin-left: 0px;
         margin-right: 10px;
     }
@@ -105,6 +125,12 @@ a:hover{
     .ant-menu{
         position: absolute;
         right: 0px;
+    }
+    .home-title{
+        font-size: 1.4rem !important;
+    }
+    .show-more{
+        font-size: 1.3rem !important;
     }
 }
 
@@ -150,7 +176,6 @@ a:hover{
 
 .coin-details-heading{
     font-weight: 700 !important;
-    /* font-size: 1.4rem !; */
     margin-top: 20px !important;
     color: var(--pink) !important;
 }
@@ -261,4 +286,86 @@ a:hover{
     .heading{
         margin-top: 20px;
     }
+}
+
+.select-news{
+    width: 180px;
+}
+.news-card{
+    min-height: 300px !important;
+}
+.news-image-container{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+.news-title{
+width: 70%;
+}
+
+.news-image-container .img{
+    width:100px;
+    height:100px;
+}
+.news-card p{
+    color: black;
+    margin: 10px 0px !important;
+}
+.provider-container{
+    display: flex;
+    justify-content: space-between;
+}
+.provider-name{
+    margin-left: 10px;
+}
+
+.chart-header{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    color: #0071bd;
+}
+.chart-title{
+    color: #0071bd !important;
+}
+.price-container{
+    display: flex !important;
+    gap: 20px !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+}
+.price-change{
+    font-weight: 900 !important;
+}
+.current-price{
+    margin-top: 0px !important;
+    font-weight: 900 !important;
+}
+.home-heading-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+.show-more{
+    margin-top: 0px !important;
+}
+.exchange-image{
+    margin: 0px 10px !important;
+}
+.search-crypto{
+    margin: 20px auto 30px auto;
+    width: 250px;
+}
+.crypto-card-container{
+    min-height: 65vh !important;
+}
+.crypto-card{
+    min-width: 250px;
+}
+.crypto-card .crypto-image{
+    width:35px;
+}
+.select-timeperiod{
+    width: 200px !important;
+    margin-top: 20px !important;
 }

@@ -27,13 +27,13 @@ export const Homepage = () => {
         <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
         <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)} /></Col>
       </Row>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
-        <Title level={2} style={{ margin: 0 }}>Top 10 Cryptos In The World</Title>
-        <Title level={3}><Link to="/cryptocurrencies">Show more</Link></Title>
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">Top 10 Cryptos In The World</Title>
+        <Title level={3} className="show-more"><Link to="/cryptocurrencies">Show more</Link></Title>
       </div>
       <Cryptocurrencies simplified />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '20px' }}>
-        <Title level={2} style={{ margin: 0 }}>Latest Crypto News</Title>
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">Latest Crypto News</Title>
         <Title level={3}><Link to="/news">Show more</Link></Title>
       </div>
       <News simplified />
