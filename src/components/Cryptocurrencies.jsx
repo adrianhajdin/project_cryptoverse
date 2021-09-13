@@ -33,7 +33,7 @@ export const Cryptocurrencies = ({ simplified }) => {
       )
     }
       <Row gutter={[32, 32]} style={{ minHeight: '65vh' }}>
-        {cryptos.length ? (
+        {cryptos?.length ? (
           <>
             { cryptos?.map((currency) => (
               <Col xs={24} sm={12} lg={6} style={{ minWidth: '250px' }} key={currency.id}>

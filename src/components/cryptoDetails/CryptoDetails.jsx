@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Typography } from 'antd';
+import { Button, Col, Row, Space, Typography, Select } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, StarOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 import './cryptoDetails.css';
-import { useGetCryptoDetailsQuery } from '../../services/cryptoApi';
+import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../../services/cryptoApi';
 import { Loader } from '../Loader';
+import LineChart from './LineChart';
 
 const { Title, Text } = Typography;
+const { Option } = Select;
 
 export const CryptoDetails = () => {
   const { coinId } = useParams();
+  const [timeperiod, setTimeperiod] = useState('7d');
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
+  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
   const cryptoDetails = data?.data?.coin;
 
   if (isFetching) return <Loader />;
@@ -25,6 +30,13 @@ export const CryptoDetails = () => {
         </Title>
         <p>{cryptoDetails.name} live price in US Dollar (USD). View value statistics, market cap and supply.</p>
       </Col>
+      <Select defaultValue="7d" style={{ width: '200px', marginTop: '20px' }} placeholder="Select Timeperiod" onChange={(value) => setTimeperiod(value)}>
+        {time.map((date) => (
+          <Option key={date}>{date}</Option>
+        ))}
+      </Select>
+      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name} />
+
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
