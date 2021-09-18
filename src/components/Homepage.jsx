@@ -4,13 +4,13 @@ import { Typography, Row, Col, Statistic } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
-import { Cryptocurrencies } from './Cryptocurrencies';
-import { News } from './News';
-import { Loader } from './Loader';
+import Cryptocurrencies from './Cryptocurrencies';
+import News from './News';
+import Loader from './Loader';
 
 const { Title } = Typography;
 
-export const Homepage = () => {
+const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
@@ -40,3 +40,5 @@ export const Homepage = () => {
     </>
   );
 };
+
+export default Homepage;

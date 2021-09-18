@@ -5,7 +5,7 @@ import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOut
 
 import icon from '../images/cryptocurrency.png';
 
-export const Navbar = () => {
+const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
 
@@ -53,3 +53,5 @@ export const Navbar = () => {
     </div>
   );
 };
+
+export default Navbar;

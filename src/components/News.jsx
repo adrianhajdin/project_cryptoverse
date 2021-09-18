@@ -4,14 +4,14 @@ import moment from 'moment';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
-import { Loader } from './Loader';
+import Loader from './Loader';
 
-const demoImage = 'http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg';
+const demoImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News';
 
 const { Text, Title } = Typography;
 const { Option } = Select;
 
-export const News = ({ simplified }) => {
+const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data } = useGetCryptosQuery(100);
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified ? 6 : 12 });
@@ -58,3 +58,5 @@ export const News = ({ simplified }) => {
     </Row>
   );
 };
+
+export default News;

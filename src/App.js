@@ -32,8 +32,13 @@ const App = () => (
           </Switch>
         </div>
       </Layout>
-      <div style={{ backgroundColor: '#001529', display: 'flex', flexDirection: 'column', padding: '20px', alignItems: 'center' }}>
-        <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2021 <Link to="/">Cryptoverse Inc.</Link> <br /> All Rights Reserved.</Typography.Title>
+      <div className="footer">
+        <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2021
+          <Link to="/">
+            Cryptoverse Inc.
+          </Link> <br />
+          All Rights Reserved.
+        </Typography.Title>
         <Space>
           <Link to="/">Home</Link>
           <Link to="/exchanges">Exchanges</Link>
@@ -41,7 +46,6 @@ const App = () => (
         </Space>
       </div>
     </div>
-
   </div>
 );
 

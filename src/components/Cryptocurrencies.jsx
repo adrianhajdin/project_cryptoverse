@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
-import { Loader } from './Loader';
+import Loader from './Loader';
 
-export const Cryptocurrencies = ({ simplified }) => {
+const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState();
@@ -45,3 +45,5 @@ export const Cryptocurrencies = ({ simplified }) => {
     </>
   );
 };
+
+export default Cryptocurrencies;

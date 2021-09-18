@@ -1,8 +1,10 @@
 import React from 'react';
 import { Spin } from 'antd';
 
-export const Loader = () => (
+const Loader = () => (
   <div className="loader">
     <Spin />
   </div>
 );
+
+export default Loader;
