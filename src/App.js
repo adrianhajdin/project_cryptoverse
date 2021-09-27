@@ -1,9 +1,41 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import { Layout, Typography, Space } from 'antd';
+import { Switch, Route } from 'react-router-dom';
+import { Layout } from 'antd';
 
-import { Exchanges, Homepage, News, Cryptocurrencies, CryptoDetails, Navbar } from './components';
+// Custom styles
 import './App.css';
+
+// Components
+import {
+  Navbar,
+  Exchanges,
+  Homepage,
+  Cryptocurrencies,
+  News,
+  CryptoDetails,
+  Footer,
+} from './components';
+
+// Routes
+const routes = [
+  { path: '/', name: 'Homepage', Component: Homepage },
+  { path: '/exchanges', name: 'Exchanges', Component: Exchanges },
+  {
+    path: '/cryptocurrencies',
+    name: 'Cryptocurrencies',
+    Component: Cryptocurrencies,
+  },
+  {
+    path: '/crypto/:coinId',
+    name: 'CryptoDetails',
+    Component: CryptoDetails,
+  },
+  {
+    path: '/news',
+    name: 'News',
+    Component: News,
+  },
+];
 
 const App = () => (
   <div className="app">
@@ -14,37 +46,15 @@ const App = () => (
       <Layout>
         <div className="routes">
           <Switch>
-            <Route exact path="/">
-              <Homepage />
-            </Route>
-            <Route exact path="/exchanges">
-              <Exchanges />
-            </Route>
-            <Route exact path="/cryptocurrencies">
-              <Cryptocurrencies />
-            </Route>
-            <Route exact path="/crypto/:coinId">
-              <CryptoDetails />
-            </Route>
-            <Route exact path="/news">
-              <News />
-            </Route>
+            {routes.map(({ path, Component }) => (
+              <Route key={path} exact path={path}>
+                <Component />
+              </Route>
+            ))}
           </Switch>
         </div>
       </Layout>
-      <div className="footer">
-        <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>Copyright © 2021
-          <Link to="/">
-            Cryptoverse Inc.
-          </Link> <br />
-          All Rights Reserved.
-        </Typography.Title>
-        <Space>
-          <Link to="/">Home</Link>
-          <Link to="/exchanges">Exchanges</Link>
-          <Link to="/news">News</Link>
-        </Space>
-      </div>
+      <Footer />
     </div>
   </div>
 );
