@@ -12,7 +12,7 @@ const { Panel } = Collapse;
 export const Exchanges = () => {
   const { data, isFetching } = useGetExchangesQuery();
   const exchangesList = data?.data?.exchanges;
-
+ // Note: To access this endpoint you need premium plan
   if (isFetching) return <Loader />;
 
   return (
@@ -24,7 +24,7 @@ export const Exchanges = () => {
         <Col span={6}>Change</Col>
       </Row>
       <Row>
-        {exchangesList.map((exchange) => (
+        {/* {exchangesList.map((exchange) => (
           <Col span={24}>
             <Collapse>
               <Panel
@@ -47,7 +47,7 @@ export const Exchanges = () => {
               </Panel>
             </Collapse>
           </Col>
-        ))}
+        ))} */}
       </Row>
     </>
   );
