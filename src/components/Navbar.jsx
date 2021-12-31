@@ -3,9 +3,9 @@ import { Button, Menu, Typography, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined } from '@ant-design/icons';
 
-import icon from '../cryptocurrency.png';
+import icon from '../images/cryptocurrency.png';
 
-export const Navbar = () => {
+const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
 
@@ -53,3 +53,5 @@ export const Navbar = () => {
     </div>
   );
 };
+
+export default Navbar;

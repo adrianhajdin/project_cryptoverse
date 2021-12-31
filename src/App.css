@@ -369,3 +369,11 @@ width: 70%;
     width: 200px !important;
     margin-top: 20px !important;
 }
+
+.footer {
+    background-color: #001529;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+}
