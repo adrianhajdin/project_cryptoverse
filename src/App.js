@@ -45,7 +45,11 @@ const App = () => (
           style={{ color: "white", textAlign: "center" }}
         >
           Copyright © 2022
-          <Link to="/"> Ajay Dhangar.</Link> <br />
+          <a href="https://ajay-dhangar.github.io/Responsive-portfolio-website.github.io/">
+            {" "}
+            Ajay Dhangar.
+          </a>{" "}
+          <br />
         </Typography.Title>
         <Space>
           <Link to="/">Home</Link>
