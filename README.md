@@ -1,6 +1,6 @@
 # Cryptoverse - Explore the World of Cryptocurrency
 
-![Cryptoverse](https://i.ibb.co/8gh5Jc8/image.png)
+![cryptocurrency](https://user-images.githubusercontent.com/99037494/208865742-c09b83d8-99a9-4e64-81b1-5c6d84149316.png)
 
 ## Introduction
 This is a code repository for the corresponding video tutorial. 
